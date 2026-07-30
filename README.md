@@ -24,12 +24,25 @@ It allows students to view a list of questions, post their own questions with op
 3. Ensure you have a database named `comp1841_coursework`.
 4. Import `scratch/schema.sql` to create the required tables (`accounts`, `post`, `category`, `post_category`) for a fresh setup.
 5. If you are upgrading from the older version that had both `accounts` and `user`, run `scratch/migrate_merge_user_into_accounts.php` once instead. It moves `display_name` and `bio` into `accounts`, repoints posts to `accounts.id`, and removes the old `user` table.
+6. To reset the database with clean demo data, run `scratch/seed_demo_data.php`.
 
 ### Accessing the Site
 
 1. Place the project folder inside your `htdocs` (or equivalent) directory.
 2. Visit the site in your browser: `http://localhost/COMP1841/CourseWork/`
 3. Click on "Sign Up" to create a new student account, or login with existing credentials.
+
+### Demo Accounts
+
+The seeded demo database uses these plain-text passwords before hashing:
+
+| Username | Login Email | Password | Role |
+| --- | --- | --- | --- |
+| `admin` | `admin@example.com` | `admin123` | `ADMIN` |
+| `dghung` | `hungdangmcn@gmail.com` | `dghung123` | `USER` |
+| `an_nguyen` | `an.nguyen@studentqa.local` | `student123` | `USER` |
+| `linh_tran` | `linh.tran@studentqa.local` | `student123` | `USER` |
+| `minh_pham` | `minh.pham@studentqa.local` | `student123` | `USER` |
 
 ### Admin Access
 
