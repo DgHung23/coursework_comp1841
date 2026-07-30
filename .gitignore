@@ -1,0 +1,4 @@
+uploads/*
+!uploads/.gitkeep
+img/studentID.jpg
+img/webcam_*.jpg
