@@ -9,16 +9,39 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'ADMIN') {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['delete_id'])) {
-        deleteCategory($pdo, $_POST['delete_id']);
-        $_SESSION['success'] = 'Module deleted successfully.';
-    } elseif (isset($_POST['edit_id'])) {
-        updateCategory($pdo, $_POST['edit_id'], $_POST['name'], $_POST['description']);
-        $_SESSION['success'] = 'Module updated successfully.';
-    } elseif (isset($_POST['add_module'])) {
-        insertCategory($pdo, $_POST['name'], $_POST['description']);
-        $_SESSION['success'] = 'Module added successfully.';
+    try {
+        if (isset($_POST['delete_id'])) {
+            deleteCategory($pdo, $_POST['delete_id']);
+            $_SESSION['success'] = 'Module deleted successfully.';
+        } elseif (isset($_POST['edit_id'])) {
+            $name = trim($_POST['name'] ?? '');
+            $description = trim($_POST['description'] ?? '');
+
+            if ($name === '') {
+                $_SESSION['error'] = 'Module name is required.';
+            } else {
+                updateCategory($pdo, $_POST['edit_id'], $name, $description);
+                $_SESSION['success'] = 'Module updated successfully.';
+            }
+        } elseif (isset($_POST['add_module'])) {
+            $name = trim($_POST['name'] ?? '');
+            $description = trim($_POST['description'] ?? '');
+
+            if ($name === '') {
+                $_SESSION['error'] = 'Module name is required.';
+            } else {
+                insertCategory($pdo, $name, $description);
+                $_SESSION['success'] = 'Module added successfully.';
+            }
+        }
+    } catch (PDOException $e) {
+        if (strpos($e->getMessage(), 'Duplicate entry') !== false) {
+            $_SESSION['error'] = 'A module with this name already exists.';
+        } else {
+            $_SESSION['error'] = 'A database error occurred while saving the module.';
+        }
     }
+
     header('Location: categories.php');
     exit;
 }
@@ -57,10 +80,17 @@ ob_start();
         <tbody>
             <?php foreach ($categories as $cat): ?>
             <tr>
-                <td><?=htmlspecialchars($cat['name'])?></td>
-                <td><?=htmlspecialchars($cat['description'])?></td>
                 <td>
-                    <!-- Simple implementation: only delete, edit can be similar but requires more UI. Let's add basic delete for now to meet requirements. -->
+                    <input type="hidden" name="edit_id" value="<?=$cat['id']?>" form="update-module-<?=$cat['id']?>">
+                    <input type="text" name="name" class="form-control" value="<?=htmlspecialchars($cat['name'])?>" required form="update-module-<?=$cat['id']?>">
+                </td>
+                <td>
+                    <input type="text" name="description" class="form-control" value="<?=htmlspecialchars($cat['description'] ?? '')?>" form="update-module-<?=$cat['id']?>">
+                </td>
+                <td>
+                    <form id="update-module-<?=$cat['id']?>" action="categories.php" method="POST" style="display:inline-block;">
+                        <button type="submit" class="btn-primary" style="padding: 0.3rem 0.5rem; font-size: 0.8rem;">Update</button>
+                    </form>
                     <form action="categories.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this module?');">
                         <input type="hidden" name="delete_id" value="<?=$cat['id']?>">
                         <button type="submit" class="btn-danger" style="padding: 0.3rem 0.5rem; font-size: 0.8rem;">Delete</button>
