@@ -2,7 +2,12 @@
     <h2>Contact Administrator</h2>
     <p style="margin-bottom: 1.5rem; color: var(--text-muted);">Have a question or issue with the platform? Send us a message.</p>
     
-    <form action="" method="POST">
+    <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY_HERE">
+        <input type="hidden" name="subject" value="New contact message from Student Q&A Forum">
+        <input type="hidden" name="from_name" value="Student Q&A Forum Contact Form">
+        <input type="checkbox" name="botcheck" style="display: none;">
+
         <div class="form-group">
             <label for="name">Your Name</label>
             <input type="text" id="name" name="name" class="form-control" required value="<?=isset($_SESSION['display_name']) ? htmlspecialchars($_SESSION['display_name']) : ''?>">

@@ -2,7 +2,7 @@
 
 This is a prototype web application designed as a simple self-contained "Student Stack Overflow", developed for the COMP1841 coursework.
 
-It allows students to view a list of questions, post their own questions with optional screenshot attachments, and assign questions to specific course modules. 
+It allows students to view a list of questions, post their own questions with optional screenshot attachments, and assign questions to specific course modules.
 
 ## Features
 
@@ -36,13 +36,13 @@ It allows students to view a list of questions, post their own questions with op
 
 The seeded demo database uses these plain-text passwords before hashing:
 
-| Username | Login Email | Password | Role |
-| --- | --- | --- | --- |
-| `admin` | `admin@example.com` | `admin123` | `ADMIN` |
-| `dghung` | `hungdangmcn@gmail.com` | `dghung123` | `USER` |
-| `an_nguyen` | `an.nguyen@studentqa.local` | `student123` | `USER` |
-| `linh_tran` | `linh.tran@studentqa.local` | `student123` | `USER` |
-| `minh_pham` | `minh.pham@studentqa.local` | `student123` | `USER` |
+| Username    | Login Email                 | Password     | Role    |
+| ----------- | --------------------------- | ------------ | ------- |
+| `admin`     | `admin@example.com`         | `admin123`   | `ADMIN` |
+| `dghung`    | `hungdangmcn@gmail.com`     | `dghung123`  | `USER`  |
+| `an_nguyen` | `an.nguyen@studentqa.local` | `student123` | `USER`  |
+| `linh_tran` | `linh.tran@studentqa.local` | `student123` | `USER`  |
+| `minh_pham` | `minh.pham@studentqa.local` | `student123` | `USER`  |
 
 ### Admin Access
 
@@ -50,19 +50,42 @@ An administrator account has been set up for you. To access the Admin Area:
 
 1. Click on **Login**.
 2. Enter the following credentials:
-   - **Email:** `admin@example.com`
-   - **Password:** `admin123`
+    - **Email:** `admin@example.com`
+    - **Password:** `admin123`
 3. Once logged in, click the **Admin Area** link in the top navigation bar.
 4. From there, you can manage the student accounts (promote users to admins, or delete them) and manage the list of Module names.
 
-## Project Structure
+## Project Hierarchy
 
-- `index.php`: The main welcome page.
-- `posts.php`: Displays the list of all questions.
-- `post_view.php`: Displays a single question in detail.
-- `post_action.php`: Form logic for adding or editing a question.
-- `login.php` & `signup.php`: User authentication.
-- `includes/`: Contains the database connection and core functionality scripts.
-- `templates/`: Contains all HTML layouts and views.
-- `admin/`: Contains logic specific to the admin dashboard.
-- `style.css`: The main stylesheet.
+```text
+CourseWork/
+|-- admin/
+|   |-- categories.php              # Manage course modules/categories
+|   |-- index.php                   # Admin dashboard entry point
+|   `-- users.php                   # Manage registered users
+|-- includes/
+|   |-- DatabaseConnection.php      # PDO database connection setup
+|   `-- DataBaseFunctions.php       # Shared database helper functions
+|-- MySQL_database/
+|   `-- comp1841_coursework.sql     # Database export for the project
+|-- templates/
+|   |-- admin_layout.html.php       # Admin page layout
+|   |-- auth_form.html.php          # Login and signup form template
+|   |-- contact.html.php            # Contact page view
+|   |-- home.html.php               # Home page view
+|   |-- layout.html.php             # Main public site layout
+|   |-- post_form.html.php          # Create/edit question form
+|   `-- posts.html.php              # Questions listing view
+|-- uploads/                        # Uploaded question images/screenshots
+|-- contact.php                     # Contact page controller
+|-- index.php                       # Home page controller
+|-- login.php                       # Login controller
+|-- logout.php                      # Logout handler
+|-- posts.php                       # Questions listing controller
+|-- post_action.php                 # Create/edit question handler
+|-- post_delete.php                 # Delete question handler
+|-- post_view.php                   # Single question detail controller
+|-- signup.php                      # Signup controller
+|-- style.css                       # Main stylesheet
+`-- README.md
+```
