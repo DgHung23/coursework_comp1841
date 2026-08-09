@@ -18,6 +18,9 @@
                     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'ADMIN'): ?>
                         <li><a href="admin/index.php">Admin Area</a></li>
                     <?php endif; ?>
+                    <?php if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'ADMIN'): ?>
+                        <li><a href="contact.php">Contact</a></li>
+                    <?php endif; ?>
                     <li><a href="logout.php">Logout (<?=$_SESSION['username']?>)</a></li>
                 <?php else: ?>
                     <li><a href="contact.php">Contact</a></li>
