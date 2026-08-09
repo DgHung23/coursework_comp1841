@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="../style.css">
     <title><?=$title ?? 'Admin Area'?></title>
 </head>
-<body>
-    <header>
+<body class="admin-area">
+    <header class="admin-header">
         <nav>
             <a href="index.php" class="brand">Admin Dashboard</a>
             <ul>

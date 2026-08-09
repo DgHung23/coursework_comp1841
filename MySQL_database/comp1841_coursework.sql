@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2026 at 07:44 PM
+-- Generation Time: Aug 09, 2026 at 06:12 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,7 +47,8 @@ INSERT INTO `accounts` (`id`, `username`, `email`, `hashed_password`, `role`, `d
 (4, 'dghung', 'hungdangmcn@gmail.com', '$2y$10$586gLeITbhlVpSGuD7.w1.kT3wGkNYIktRJwH76ztGV7YrWkShMKa', 'USER', 'Dg Hung', 'Coursework owner and demo student account.', '2026-06-26 05:08:22'),
 (6, 'an_nguyen', 'an.nguyen@studentqa.local', '$2y$10$iQ7aUMY1QJicwCLbvxkDzONfx7PgudMQ9c7Zt8Jgwqn/uB0wuQTQK', 'USER', 'An Nguyen', 'First year computing student.', '2026-07-30 23:37:42'),
 (7, 'linh_tran', 'linh.tran@studentqa.local', '$2y$10$bY2E4UYeHlFrbOMVXtlYG.t/MqQTIbcVvzh9yamHiAjH9yUMz/qSG', 'USER', 'Linh Tran', 'Interested in databases and clean UI design.', '2026-07-30 23:37:42'),
-(8, 'minh_pham', 'minh.pham@studentqa.local', '$2y$10$BxZlHfdDwB2.vzzadwx4xOh9/HdgWZkb/zRfMHULYgqKB1mzEzRCq', 'USER', 'Minh Pham', 'Practising PHP, MySQL, and coursework documentation.', '2026-07-30 23:37:42');
+(8, 'minh_pham', 'minh.pham@studentqa.local', '$2y$10$BxZlHfdDwB2.vzzadwx4xOh9/HdgWZkb/zRfMHULYgqKB1mzEzRCq', 'USER', 'Minh Pham', 'Practising PHP, MySQL, and coursework documentation.', '2026-07-30 23:37:42'),
+(9, 'user123', 'user123@example.com', '$2y$10$eO43R1ugGpO3bIQtdVdYTOZT71ZUguHxYImkJDhRV.3CyE4A0pLBu', 'USER', 'user123', 'normal user for testing the system', '2026-08-09 16:12:06');
 
 -- --------------------------------------------------------
 
@@ -95,15 +96,16 @@ CREATE TABLE `post` (
 
 INSERT INTO `post` (`id`, `author_id`, `title`, `content`, `image`, `created_at`, `updated_at`) VALUES
 (21, 4, 'How should I structure PHP includes for this coursework?', 'I have separate files for the layout, database connection, and helper functions. Is this a good structure for a small PHP coursework project, or should I split it further?', NULL, '2026-07-21 16:15:00', '2026-07-21 16:15:00'),
-(22, 7, 'PDO prepared statement returns no rows even though data exists', 'The SQL works in phpMyAdmin, but my PHP page returns an empty array. I am binding a category id from the query string. What should I check first?', NULL, '2026-07-21 21:40:00', '2026-07-21 21:40:00'),
-(23, 6, 'When should I use a composite primary key?', 'For the post_category table, I see that post_id and category_id are used together as the primary key. Why is this better than adding a separate id column?', NULL, '2026-07-22 17:20:00', '2026-07-22 17:20:00'),
+(22, 7, 'PDO prepared statement returns no rows even though data exists', 'The SQL works in phpMyAdmin, but my PHP page returns an empty array. I am binding a category id from the query string. What should I check first?', '338f1dcfd8dc9afdd7030eddcac34d29_1785922559.png', '2026-07-21 21:40:00', '2026-08-05 09:35:59'),
+(23, 6, 'When should I use a composite primary key?', 'For the post_category table, I see that post_id and category_id are used together as the primary key. Why is this better than adding a separate id column?', 'c4d48501161a2d7efc0d9e5963754151_1785922568.jpg', '2026-07-22 17:20:00', '2026-08-05 09:36:08'),
 (24, 8, 'How do I normalize forum data without overcomplicating the schema?', 'I want to explain normalization in my report using accounts, posts, categories, and the post_category bridge table. What is a simple way to describe it?', NULL, '2026-07-22 23:05:00', '2026-07-22 23:05:00'),
 (25, 4, 'Best way to break a coursework task into smaller functions', 'My post page is getting longer as I add filtering and CRUD features. Which parts should be moved into reusable functions?', NULL, '2026-07-23 18:30:00', '2026-07-23 18:30:00'),
-(26, 6, 'How do I plan MVC-style pages in plain PHP?', 'This project is not using a framework, but I still want the code to be clear. Is it okay to keep controller logic in PHP entry files and views in templates?', NULL, '2026-07-24 16:10:00', '2026-07-24 16:10:00'),
+(26, 6, 'How do I plan MVC-style pages in plain PHP?', 'This project is not using a framework, but I still want the code to be clear. Is it okay to keep controller logic in PHP entry files and views in templates?', '2f22d752240ce0876de989e276c4a419_1785922536.jpg', '2026-07-24 16:10:00', '2026-08-05 09:35:36'),
 (27, 7, 'What should a short coursework reflection include?', 'I need to write about what went well, what was difficult, and what could be improved. How much technical detail should be included?', NULL, '2026-07-24 22:35:00', '2026-07-24 22:35:00'),
 (28, 8, 'How can I test role-based access control?', 'The admin area should only be available to ADMIN users. What manual tests should I include as evidence in my report?', NULL, '2026-07-25 19:00:00', '2026-07-25 19:00:00'),
 (29, 4, 'Loop through an array of modules and show selected checkboxes', 'On the edit post page, I want modules that are already assigned to a post to be checked automatically. What is the cleanest approach?', NULL, '2026-07-26 17:45:00', '2026-07-26 17:45:00'),
-(30, 1, 'How should security decisions be described in the final report?', 'The project uses password_hash, password_verify, PDO prepared statements, and role checks. Which parts should be highlighted for marking?', NULL, '2026-07-27 00:20:00', '2026-07-27 00:20:00');
+(30, 1, 'How should security decisions be described in the final report?', 'The project uses password_hash, password_verify, PDO prepared statements, and role checks. Which parts should be highlighted for marking?', '8ed6753f03ef10147f7a6f74a748eca5_1785922550.png', '2026-07-27 00:20:00', '2026-08-05 09:35:50'),
+(31, 4, 'test 1', 'abc', '64a57edbe1d1ca3806d76664654c6d1f_1786120030.jpg', '2026-08-07 16:27:10', '2026-08-07 16:27:10');
 
 -- --------------------------------------------------------
 
@@ -135,10 +137,13 @@ INSERT INTO `post_category` (`post_id`, `category_id`) VALUES
 (27, 16),
 (28, 12),
 (28, 15),
-(29, 11),
+(29, 12),
 (29, 14),
+(29, 15),
 (30, 15),
-(30, 16);
+(30, 16),
+(31, 15),
+(31, 16);
 
 --
 -- Indexes for dumped tables
@@ -182,7 +187,7 @@ ALTER TABLE `post_category`
 -- AUTO_INCREMENT for table `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -194,7 +199,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables

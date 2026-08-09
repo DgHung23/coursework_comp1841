@@ -92,6 +92,25 @@ header {
     border-bottom: 1px solid var(--line);
 }
 
+.admin-header {
+    background: #7C3AED;
+    border-bottom-color: #1f313a;
+}
+
+.admin-header nav .brand {
+    color: #ffffff;
+}
+
+.admin-header nav ul li a {
+    color: #dce7ea;
+}
+
+.admin-header nav ul li a:hover {
+    color: #ffffff;
+    background: #5B21B6;
+    border-color: #17003c;
+}
+
 footer {
     border-top: 1px solid var(--line);
     color: var(--muted);
