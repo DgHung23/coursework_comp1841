@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $imageUploadError = true;
         }
     } else if (isset($post['image'])) {
-        $image = $post['image']; // Keep existing image if no new one uploaded
+        $image = $post['image']; 
     }
 
     if (!$imageUploadError) {

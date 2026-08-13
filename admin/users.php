@@ -47,21 +47,29 @@ ob_start();
                 <td><?=htmlspecialchars($acc['display_name'] ?? '')?></td>
                 <td><?=htmlspecialchars($acc['bio'] ?? '')?></td>
                 <td>
+                    <?php if ($acc['id'] !== $_SESSION['user_id']): ?>
                     <form action="users.php" method="POST" style="display: flex; gap: 0.5rem; align-items: center;">
                         <input type="hidden" name="update_role_id" value="<?=$acc['id']?>">
-                        <select name="role" class="form-control" style="padding: 0.3rem; margin-bottom: 0;">
+                        <select name="role" class="form-control"
+                            style="padding: 0.3rem; margin-bottom: 0; min-width: 65px;">
                             <option value="USER" <?=$acc['role'] === 'USER' ? 'selected' : ''?>>User</option>
                             <option value="ADMIN" <?=$acc['role'] === 'ADMIN' ? 'selected' : ''?>>Admin</option>
                         </select>
-                        <button type="submit" class="btn-primary" style="padding: 0.3rem 0.5rem; font-size: 0.8rem;">Save</button>
+                        <button type="submit" class="btn-primary"
+                            style="padding: 0.3rem 0.5rem; font-size: 0.8rem;">Save</button>
                     </form>
+                    <?php else: ?>
+                    <?=htmlspecialchars($acc['role'])?>
+                    <?php endif; ?>
                 </td>
                 <td><?=date('M j, Y', strtotime($acc['created_at']))?></td>
                 <td>
                     <?php if ($acc['id'] !== $_SESSION['user_id']): ?>
-                    <form action="users.php" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                    <form action="users.php" method="POST" style="display:inline-block;"
+                        onsubmit="return confirm('Are you sure you want to delete this user?');">
                         <input type="hidden" name="delete_id" value="<?=$acc['id']?>">
-                        <button type="submit" class="btn-danger" style="padding: 0.3rem 0.5rem; font-size: 0.8rem;">Delete</button>
+                        <button type="submit" class="btn-danger"
+                            style="padding: 0.3rem 0.5rem; font-size: 0.8rem;">Delete</button>
                     </form>
                     <?php endif; ?>
                 </td>

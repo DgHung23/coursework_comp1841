@@ -4,10 +4,10 @@
         message.</p>
 
     <form action="https://api.web3forms.com/submit" method="POST">
-        ...
+
         <input type="hidden" name="access_key" value="0f9674ea-d5ce-489e-a749-f7e5fda04328">
         <!-- CHANGE YOUR WEB3FORMS ACCESS KEY HERE -->
-        ...
+
         <input type="hidden" name="subject" value="New contact message from Student Q&A Forum">
         <input type="hidden" name="from_name" value="Student Q&A Forum Contact Form">
         <input type="checkbox" name="botcheck" style="display: none;">
